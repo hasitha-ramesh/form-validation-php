@@ -1,0 +1,13 @@
+body {
+  font-size: 25px;
+  font-family: "Times New Roman", Times, serif;
+}
+label {
+  width: 300px;
+  display: inline-block;
+}
+input {
+  font-size: 25px;
+  font-family: "Times New Roman", Times, serif;
+  padding: 5px;
+}

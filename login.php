@@ -11,11 +11,11 @@
         <h1>Welcome</h1>
         <div>
             <label for="email">Email Address</label>
-            <input type="text" id="email" name="email" value="<?php echo $email; ?>" autofocus placeholder="Enter email address">
+            <input type="text" id="email" name="email" autofocus placeholder="Enter email address">
         </div>
         <div>
             <label for="phone">Phone Number</label>
-            <input type="text" id="phone" name="phone" value="<?php echo $phone; ?>" placeholder="Enter phone number">
+            <input type="text" id="phone" name="phone" placeholder="Enter phone number">
         </div>
         <div>
             <label for="password">Password</label>

@@ -32,6 +32,7 @@ if (isset($_POST['submit'])) {
         <p>This is a simple form to demonstrate email and phone number validation using PHP's POST method.</p>
         <form action="" method="post" class="form">
             <h1>Welcome</h1>
+            <h1>Welcome</h1>
 
             <?php if (!empty($alert)): ?>
                 <div class="alert <?= $alert['type'];?>">

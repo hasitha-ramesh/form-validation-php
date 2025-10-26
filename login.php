@@ -5,6 +5,7 @@ $all_valid = true;
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $phone = $_POST['phone'];
+    $password = $_POST['password'];
 
 
     //email validation
@@ -24,6 +25,15 @@ if (isset($_POST['submit'])) {
     }elseif (!preg_match('/^\+?[0-9]{10,15}$/', $phone )) {
         $alert[] = ["message" => "Invalid phone number format." , "type" => "warning"];
         $all_valid = false;
+    }
+
+    if (empty($password)){
+        $alert[] = ["message" => "Password os reqired." , "type" => "error"];
+        $all_valid = false;
+    }elseif (strlen(trim($password)) < 6){
+        $alert[] = ["message" => "Password must be at least 6 characters." , "type" => "warning"];
+        $all_valid = false;
+
     }
 
     if ($all_valid){

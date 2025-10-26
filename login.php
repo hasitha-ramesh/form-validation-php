@@ -1,17 +1,35 @@
 <?php
 $alert = [];
+$all_valid = true;
 
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
+    $phone = $_POST['phone'];
 
 
     //email validation
     if (empty($email)) {
-        $alert = ["message" => "Email is required.", "type" => "error"];
+        $alert[] = ["message" => "Email is required.", "type" => "error"];
+        $all_valid = false;
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $alert = ["message" => "Invalid email format.", "type" => "warning"];
-    } else {
-        $alert = ["message" => "Email is valid.", "type" => "success"];
+        $alert[] = ["message" => "Invalid email format.", "type" => "warning"];
+        $all_valid = false;
+    }
+
+
+    //phone validation
+    if (empty($phone)) {
+        $alert[] = ["message" => "Phone number is required." , "type" => "error"];
+        $all_valid = false;
+    }elseif (!preg_match('/^\+?[0-9]{10,15}$/', $phone )) {
+        $alert[] = ["message" => "Invalid phone number format." , "type" => "warning"];
+        $all_valid = false;
+    }
+
+    if ($all_valid){
+        $alert = [
+            ["message" => "Registration Succesfull." , "type" => "success"]
+        ];
     }
 }
 ?>
@@ -34,9 +52,11 @@ if (isset($_POST['submit'])) {
             <h1>Welcome</h1>
 
             <?php if (!empty($alert)): ?>
+                <?php foreach ($alert as $alert): ?>
                 <div class="alert <?= $alert['type'];?>">
                     <p><?= $alert['message']; ?> </p>
                 </div>
+                <?php endforeach; ?>
             <?php endif; ?>
 
             <div>
